@@ -56,16 +56,16 @@ assets/ (optional)	Additional materials (e.g., model architecture diagram)
 
 Visual Results
 
-### Sample Submission Format
-![Sample CSV](./reports/solution_sample_overview.png)
+### Sample Submission Format  
+![Sample CSV](./snapshot/solution_sample_overview.png)
 
 ### Final Kaggle Leaderboard Results
 
 **Public Leaderboard**  
-![Public Leaderboard](./reports/kaggle_public_leaderboard.png)
+![Public Leaderboard](./snapshot/Public_Leaderboard_Result.png)
 
 **Private Leaderboard**  
-![Private Leaderboard](./reports/kaggle_private_leaderboard.png)
+![Private Leaderboard](./snapshot/Private_Leaderboard_Result.png)
 
 
 Environment & Dependencies
