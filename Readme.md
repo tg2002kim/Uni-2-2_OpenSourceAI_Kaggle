@@ -1,87 +1,64 @@
-OpenSourceAI - Kaggle Competition Report
+# OpenSourceAI - Kaggle Competition Report
 
-This repository contains the final deliverable for the Kaggle OpenSourceAI Competition, completed during the second year, second semester (Fall 2024) as part of the Open Source AI Applications course at Dankook University.
+This repository contains the final deliverable for the **Kaggle OpenSourceAI Competition**, completed during the Fall 2024 semester for the **Open Source AI Applications** course at Dankook University. The project focuses on binary classification using multimodal data.
 
+---
 
-Project Overview
+## Project Overview
 
-Objective
-Perform binary classification on multimodal data using both image and text inputs.
+- **Objective**: To perform binary classification on multimodal data, leveraging both image and text inputs.
+- **Dataset**: A custom dataset with image paths, text descriptions, and binary labels.
+- **Goal**: To achieve high classification accuracy and a strong leaderboard score.
 
-Dataset Description
+---
 
-* train.csv: image paths, corresponding text, and ground-truth labels
+## Methodology
 
-* test.csv: image paths and text without labels
+### Model Architecture
+- **Image Encoder**: **EfficientNet-B3** (pretrained)
+- **Text Encoder**: **BERT** (bert-base-uncased)
+- **Fusion**: Image and text embeddings are concatenated and fed into fully connected layers for classification.
 
-* sample_submission.csv: format template for submission
+### Training Techniques
+- **Data Augmentation**: Techniques used include resizing, random horizontal flips, rotation, and color jitter.
+- **Regularization**: **MixUp** was applied to improve model generalization.
+- **Optimization**: The model was trained using **SAM (Sharpness-Aware Minimization)**, a **Lookahead + AdamW** optimizer, and a **CosineAnnealingWarmRestarts** learning rate scheduler. **Mixed Precision Training (AMP)** was enabled for faster training.
 
+---
 
-Methodology
+## Experimental Results
 
-Model Architecture
-* Image encoder: EfficientNet-B3 (pretrained)
-* Text encoder: BERT (bert-base-uncased)
-* Fusion: Concatenation of image and text embeddings, followed by fully connected layers
+| Model Version | Validation Accuracy | Public Score | Private Score |
+| :--- | :--- | :--- | :--- |
+| Baseline (Simple CNN + Text) | 0.675 | 0.683 | 0.684 |
+| BERT + CNN | 0.715 | 0.718 | 0.720 |
+| **BERT + EfficientNet + SAM + MixUp** | **0.742** | **0.731** | **0.729** |
 
-Training Techniques
-* Data Augmentation: Resize, Random Horizontal Flip, Rotation, Color Jitter
-* Regularization: MixUp
-* Optimization:
-    * SAM (Sharpness-Aware Minimization)
-    * Lookahead + AdamW optimizer
-    * CosineAnnealingWarmRestarts learning rate scheduler
-    * Mixed Precision Training via AMP (torch.cuda.amp)
+The **BERT + EfficientNet + SAM + MixUp** model was the final submitted version.
 
+---
 
-Experimental Results
+## Repository Structure
 
-Model Version	Validation Accuracy	Public Score	Private Score
-Baseline (Simple CNN + Text)	0.675	0.683	0.684
-BERT + CNN	0.715	0.718	0.720
-BERT + EfficientNet + SAM + MixUp	0.742	0.731	0.729
-
-Final submitted model:
-BERT + EfficientNet + SAM + MixUp
-
-
-Repository Structure
-
-File / Folder	Description
-OpenSourceAI_Kaggle.ipynb	Final version used for submission, with best-performing model and configuration
-Kaggle_NonOrganized.ipynb	Earlier experiments including baseline, BERT-only, and CNN-only variants. Contains multiple test versions before final convergence
-reports/	Contains visual results such as accuracy curves, confusion matrix, and Kaggle submission screenshots
-assets/ (optional)	Additional materials (e.g., model architecture diagram)
+OpenSourceAI_Kaggle.ipynb       # Final notebook used for submission
+Kaggle_NonOrganized.ipynb       # Earlier experiments and baseline models
+reports/                        # Visual results, accuracy curves, confusion matrix
+assets/ (optional)              # Model architecture diagrams or other materials
 
 
-Visual Results
+---
 
-### Sample Submission Format  
-![Sample CSV](./snapshot/solution_sample_overview.png)
+## Environment & Dependencies
 
-### Final Kaggle Leaderboard Results
+- **Python**: 3.8+
+- **Deep Learning Framework**: PyTorch >= 1.10
+- **Libraries**: `transformers`, `timm`, `albumentations`, `torchvision`, `pandas`, `numpy`
+- **GPU**: CUDA Toolkit is required for training.
 
-**Public Leaderboard**  
-![Public Leaderboard](./snapshot/Public_Leaderboard_Result.png)
+---
 
-**Private Leaderboard**  
-![Private Leaderboard](./snapshot/Private_Leaderboard_Result.png)
+## Notes
 
-
-Environment & Dependencies
-
-Python 3.8+
-
-PyTorch >= 1.10
-
-CUDA Toolkit
-
-transformers (HuggingFace)
-
-timm, albumentations, torchvision, pandas, numpy
-
-
-Notes
-* This repository is based on the project submitted for the 2024 Fall Open Source AI Applications course at Dankook University.
-* All experiments were conducted on GPU with mixed precision training enabled.
-* The final result was submitted to the official Kaggle OSAI competition.
+* This repository is part of a project for the 2024 Fall Open Source AI Applications course at Dankook University.
+* All experiments were conducted on a GPU with mixed precision training enabled for efficiency.
+* The final model was submitted to the official Kaggle OpenSourceAI competition.
