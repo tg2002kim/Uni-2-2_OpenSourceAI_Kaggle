@@ -1,6 +1,6 @@
 OpenSourceAI - Kaggle Competition Report
 
-This repository contains the final deliverable for the Kaggle OpenSourceAI Competition, conducted during the Fall 2024 semester as part of the Open Source AI Applications course at Dankook University.
+This repository contains the final deliverable for the Kaggle OpenSourceAI Competition, completed during the second year, second semester (Fall 2024) as part of the Open Source AI Applications course at Dankook University.
 
 
 Project Overview
