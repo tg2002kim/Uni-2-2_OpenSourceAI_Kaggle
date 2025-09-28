@@ -1,3 +1,5 @@
+Dankook University, 2nd Year 2nd Semester (Fall 2024)
+
 # OpenSourceAI - Kaggle Competition Report
 
 This repository contains the final deliverable for the **Kaggle OpenSourceAI Competition**, completed during the Fall 2024 semester for the **Open Source AI Applications** course at Dankook University. The project focuses on binary classification using multimodal data.
