@@ -48,7 +48,7 @@ reports/                        # Visual results, accuracy curves, confusion mat
 assets/ (optional)              # Model architecture diagrams or other materials
 
 
----
+--- 
 
 ## Environment & Dependencies
 
